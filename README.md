@@ -17,6 +17,7 @@ You can't have quality, quantity and cheap labor at the same time:)
 - I would've focus more on functionality rather then UI. I guess I'll do it next time:)
 - I would've finish day/night theme, it should be ez, just pass the props to withTheme hoc and add a toggle
 - I wouldv'e use redux to handle inter-component communication
+- I wouldv'e created a service wrapper around that uri I fetched books from and used the power of elasic search to properly implement debounced data fetching
 - Some components where rushed, therefore bugs might be a real deal, the whole app does not feel polished.
 - React-virtualized for grid/list views.
 - Typescript is eating time for initial build but can be very benificial when app will be on maintanance
