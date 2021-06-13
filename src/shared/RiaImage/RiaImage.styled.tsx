@@ -13,7 +13,7 @@ const SImage = withRiaTheme(styled.div`
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  border: 2px solid ${({ theme }: SImageProps) => theme.secondaryColor};
+  border: 2px solid ${({ theme }: SImageProps) => theme.complementaryColor2};
   padding: 22px;
   min-height: ${({ height }: SImageProps) => height};
   min-width: ${({ width }: SImageProps) => width};

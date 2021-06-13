@@ -18,7 +18,7 @@ const SToggle = withRiaTheme(styled.div`
   font-size: medium;
   font-family: ${({ theme }: SToggleProps) => theme.fontFamily};
   color: ${({ theme }: SToggleProps) => theme.textColor};
-  background: ${({ theme }: SToggleProps) => theme.secondaryColor};
+  background: ${({ theme }: SToggleProps) => theme.complementaryColor};
   display: flex;
   padding: 8px;
 `);

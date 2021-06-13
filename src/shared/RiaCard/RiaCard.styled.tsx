@@ -1,8 +1,10 @@
 import styled, { css } from 'styled-components';
 import withRiaTheme from '../../core/hocs/withRiaTheme';
+import { IBaseTheme } from '../../features/Themes/Base';
 
 type SCardType = {
   orientation: 'vertical' | 'horizontal';
+  theme: IBaseTheme;
 };
 
 const SCard = withRiaTheme(styled.div`
@@ -22,6 +24,7 @@ const SCard = withRiaTheme(styled.div`
   cursor: pointer;
   padding: 22px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  background-color: ${({ theme }) => theme.complementaryColor};
   transition: 0.4s all;
 
   &:hover {

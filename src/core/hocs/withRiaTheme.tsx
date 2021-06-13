@@ -1,18 +1,12 @@
-import React from 'react';
-import { IBaseTheme } from '../../features/Themes/Base';
-import { DayTheme } from '../../features/Themes/Day';
+import React, { useContext } from 'react';
+import { ReduxStore } from '../cheating/ReduxStore';
 
 const withRiaTheme = (Component: any) => {
-  // from state
-  const theme: IBaseTheme = new DayTheme();
+  const WrapperComponent = (props: any): JSX.Element => {
+    const context = useContext(ReduxStore);
 
-  const newProps = {
-    theme,
+    return <Component {...props} theme={context.theme} />;
   };
-
-  const WrapperComponent = (props: any): JSX.Element => (
-    <Component {...props} {...newProps} />
-  );
 
   return WrapperComponent;
 };

@@ -7,6 +7,7 @@ export type ToggleCustomization = {
 };
 
 type RiaToggleProps = {
+  value?: boolean;
   on: ToggleCustomization;
   off: ToggleCustomization;
   onClick: (enabled: boolean) => void;
@@ -16,8 +17,9 @@ const RiaToggle = ({
   on: { Icon: IconOn, color: colorOn },
   off: { Icon: IconOff, color: colorOff },
   onClick,
+  value,
 }: RiaToggleProps): JSX.Element => {
-  const [enabled, setEnabled] = useState(false);
+  const [enabled, setEnabled] = useState(value);
 
   const handleClick = useCallback(() => {
     setEnabled(!enabled);
