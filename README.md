@@ -1,11 +1,12 @@
 # ria-book-store-app
 
-![2123123](https://user-images.githubusercontent.com/32410574/121790421-e8e2e580-cbe7-11eb-8961-d952c54c38ff.jpg)
+<img width="856" alt="Screenshot_1" src="https://user-images.githubusercontent.com/32410574/121792762-8991cf00-cc01-11eb-97a9-e9a0b6c0d8d2.png">
 
 
 ## Quickstart
 
 ```
+$ npm i
 $ npm start
 $ npm run build
 ```
