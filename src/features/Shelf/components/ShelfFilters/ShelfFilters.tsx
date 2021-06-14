@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import RiaToggle from '../../../../shared/RiaToggle';
 import GridSvg from '../../../../resources/icons/grid.svg';
 import ListSvg from '../../../../resources/icons/list.svg';
@@ -23,12 +23,18 @@ const ListIcon = (): JSX.Element => (
 const ShelfFilters = ({
   theme,
   onCollectionDisplayChanged,
-}: ShelfFiltersProps): JSX.Element => (
-  <SShelfFilters>
-    {/* <div>Filter dropdown 1</div> */}
-    {/* <div>Filter dropdown 2</div> */}
-    <div>
+}: ShelfFiltersProps): JSX.Element => {
+  const [isList, setIsList] = useState(false);
+
+  const handleToggleClick = useCallback(() => {
+    setIsList(!isList);
+    onCollectionDisplayChanged(isList);
+  }, [isList]);
+
+  return (
+    <SShelfFilters>
       <RiaToggle
+        value={isList}
         on={{
           color: theme.primaryColor,
           Icon: ListIcon,
@@ -37,11 +43,11 @@ const ShelfFilters = ({
           color: theme.primaryColor,
           Icon: GridIcon,
         }}
-        onClick={onCollectionDisplayChanged}
+        onClick={handleToggleClick}
       />
-    </div>
-  </SShelfFilters>
-);
+    </SShelfFilters>
+  );
+};
 
 const ShelfFiltersThemed = withRiaTheme(ShelfFilters);
 

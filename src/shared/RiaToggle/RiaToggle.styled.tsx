@@ -42,9 +42,9 @@ const SToggleButtonOff = withRiaTheme(styled.button`
   outline: none;
   cursor: pointer;
   color: ${({ value, theme }: SToggleProps) =>
-    !value ? theme.textColor : Color(theme.textColor).negate().string()};
+    value ? theme.textColor : Color(theme.textColor).negate().string()};
   background: ${({ value, color }: SToggleProps) =>
-    !value ? color : 'transparent'};
+    value ? color : 'transparent'};
 `);
 
 export { SToggle, SToggleButtonOn, SToggleButtonOff };

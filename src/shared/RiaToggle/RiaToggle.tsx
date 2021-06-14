@@ -1,4 +1,4 @@
-import React, { ComponentType, useCallback, useState } from 'react';
+import React, { ComponentType, useCallback, useEffect, useState } from 'react';
 import { SToggle, SToggleButtonOn, SToggleButtonOff } from './RiaToggle.styled';
 
 export type ToggleCustomization = {
@@ -19,19 +19,16 @@ const RiaToggle = ({
   onClick,
   value,
 }: RiaToggleProps): JSX.Element => {
-  const [enabled, setEnabled] = useState(value);
-
   const handleClick = useCallback(() => {
-    setEnabled(!enabled);
-    onClick(enabled);
-  }, [enabled]);
+    onClick(!value);
+  }, [value]);
 
   return (
     <SToggle onClick={handleClick}>
-      <SToggleButtonOff value={enabled} color={colorOff}>
+      <SToggleButtonOff value={!value} color={colorOff}>
         {IconOff ? <IconOff /> : 'OFF'}
       </SToggleButtonOff>
-      <SToggleButtonOn value={enabled} color={colorOn}>
+      <SToggleButtonOn value={value} color={colorOn}>
         {IconOn ? <IconOn /> : 'ON'}
       </SToggleButtonOn>
     </SToggle>

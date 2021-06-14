@@ -33,8 +33,10 @@ const NightIcon = (): JSX.Element => (
 
 let timer: NodeJS.Timer;
 
+const DEFAULT_THEME = new DayTheme();
+
 const App = (): JSX.Element => {
-  const [theme, setTheme] = useState<IBaseTheme>(new DayTheme());
+  const [theme, setTheme] = useState<IBaseTheme>(DEFAULT_THEME);
   const [searchTerms, setSearchTerms] = useState('');
 
   const handleSearchTerms = useCallback(
@@ -46,14 +48,20 @@ const App = (): JSX.Element => {
   );
 
   const handleThemeChange = useCallback((value) => {
-    const newTheme = value ? new DayTheme() : new NightTheme();
+    const newTheme = value ? new NightTheme() : new DayTheme();
     setTheme(newTheme);
     setObjectToStorage('app.theme', newTheme);
   }, []);
 
   useEffect(() => {
-    setTheme(getObjectFromStorage('app.theme') as IBaseTheme);
-  }, [getObjectFromStorage]);
+    const userSavedTheme = getObjectFromStorage('app.theme') as IBaseTheme;
+
+    if (userSavedTheme) {
+      setTheme(userSavedTheme);
+    } else {
+      setObjectToStorage('app.theme', DEFAULT_THEME);
+    }
+  }, []);
 
   return (
     <ReduxStore.Provider value={{ theme }}>
